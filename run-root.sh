@@ -10,6 +10,12 @@ if [ -n "$FFERRIERE_MARIADB_SERVER_NAME" ]; then
     SERVER_NAME="$FFERRIERE_MARIADB_SERVER_NAME"
 fi
 
+NB_ROWS=$(docker ps | grep -w "$SERVER_NAME" | wc -l)
+if [ "$NB_ROWS" -eq 0 ]; then
+    echo "Container '$SERVER_NAME' doesn't exists !" >&2
+    exit 1
+fi
+
 DOCKER_ARGS='--rm -i';
 if [ -t 0 ]; then
     DOCKER_ARGS="$DOCKER_ARGS -t"
