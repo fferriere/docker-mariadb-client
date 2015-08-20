@@ -23,4 +23,4 @@ fi
 
 docker run $DOCKER_ARGS \
   --volumes-from $SERVER_NAME \
-  $IMAGE $@
+  $IMAGE mysql $@

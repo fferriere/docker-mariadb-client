@@ -11,4 +11,4 @@ if [ -t 0 ]; then
 fi
 
 docker run $DOCKER_ARGS \
-  $IMAGE $@
+  $IMAGE mysql $@
